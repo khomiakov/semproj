@@ -7,23 +7,27 @@
 2d-editor отображает изменения на экране.
 """
 
-WHITE = (255, 255, 255)
+WHITE = 16777215
 
-
-class Pixel:
-    """Должен хранить цвет и координату. Является центральным."""
-    def __init__(self, x, y, colour):
-        self.x = x
-        self.y = y
-        self.colour = colour
-        self.type = 0
-    def input1(self):
-        """"Считывает координаты и цвет с экрана. Будет усложнена по параметру
-яркости.""""
-        if self.colour == WHITE:
-            self.type = 1
-    def output(self):
-        """Отрисовывает обновленный участок."""
-        pass
+def input1():
+        """"В зоне действия эффекта ищет светящиеся объекты.
+        Из массива всех пикселей оставляет только их.""""
+        global glowing_dots
+        ar = pygame.PixelArray(zone_of_influence)
+        glowing_dots = []
+        for i in range(len(ar)):
+            for j in range(len(ar[0])): 
+                if ar[i,j] == WHITE:
+                glowing_dots.append([i,j])
+                
+def output():
+    """Отрисовывает обновленный участок."""
+    ar = pygame.PixelArray(zone_of_influence)
+    ar[:] = 0
+    for k in range(len(glowing_dots)):
+        ar[glowing_dots[k][0], glowing_dots[k][1]] = (255, 255, 255)
+    del ar
+    screen.blit(zone_of_influence, (,))
+    pygame.display.flip()
     
 
