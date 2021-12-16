@@ -12,6 +12,7 @@ class Constants:
         self.height = 500  # высота экрана, условность
         self.y0 = self.height / 2  # координата y центра чёрной дыры на экране
         self.s = 1500
+        self.r_bh_screen = 50
 
 
 c = Constants()

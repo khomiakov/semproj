@@ -12,7 +12,7 @@ class Plot1:
 
     def draw_plot(self):
         plt.figure(figsize=(20, 7))
-        plt.plot(self.x_f1, self.f1(self.x_f1 * c.m) * 180 * 3600 / np.pi, label=r'$f(m)$')
+        plt.plot(self.x_f1, self.f1(self.x_f1 * np.pi / 180 / 3600) * 180 * 3600 / np.pi, label=r'$f(a)$')
         plt.xlabel(r'$m(solar masses)$', fontsize=14)
         plt.ylabel(r'$f(arc seconds)$', fontsize=14)
         plt.grid(True)
@@ -30,7 +30,7 @@ class Plot2:
 
     def draw_plot(self):
         plt.figure(figsize=(20, 7))
-        plt.plot(self.x_f2, self.f2(self.x_f2 * np.pi / 180 / 3600) * 180 * 3600 / np.pi, label=r'$f(a)$')
+        plt.plot(self.x_f2, self.f2(self.x_f2 * c.m) * 180 * 3600 / np.pi, label=r'$f(m)$')
         plt.xlabel(r'$a(arc seconds)$', fontsize=14)
         plt.ylabel(r'$f(arc seconds)$', fontsize=14)
         plt.grid(True)
