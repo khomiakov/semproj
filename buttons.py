@@ -42,7 +42,7 @@ class Button:
         else: return False
 
 
-screen = pygame.display.set_mode((801, 400))
+"""screen = pygame.display.set_mode((801, 400))
 pygame.display.set_caption("Гравитационное линзирование")
 Button1 = Button()
 Button2 = Button()
@@ -64,4 +64,4 @@ while not finished:
                         print("График для " + input() + ":")
 
     
-pygame.quit()
+pygame.quit()"""
