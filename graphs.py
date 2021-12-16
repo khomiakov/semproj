@@ -102,6 +102,8 @@ def draw_plot():
             draw_a_normal_line(ff1[i][0], ff1[i][1], ff1[i + 1][0], ff1[i + 1][1], 1,  black, screen)
             draw_a_normal_line(ff2[i][0], ff2[i][1], ff2[i + 1][0], ff2[i + 1][1], 1, black, screen)
             draw_a_normal_line(ff3[i][0], ff3[i][1], ff3[i + 1][0], ff3[i + 1][1], 1, black, screen)
+        pygame.draw.arc(screen, black, [400, y_obs - 27, 20, 15], - np.pi / 2, np.pi / 2)
+        pygame.draw.arc(screen, black, [1160, y_obs - 89, 20, 15], - np.pi / 2, np.pi / 2)
         pygame.display.update()
         clock.tick(fps)
         for event in pygame.event.get():
