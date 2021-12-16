@@ -6,8 +6,10 @@ from Constants import *
 class Plot1:
     def __init__(self):
         self.x_f1 = np.arange(1, 3600, 1 / 60)
+        self.zzz = None
 
     def f1(self, alpha):
+        self.zzz = None
         return - alpha / 2 + np.power((alpha / 2) ** 2 + 4 * c.m * c.g / c.d / (c.c ** 2), 1 / 2)
 
     def draw_plot(self):
@@ -23,8 +25,10 @@ class Plot1:
 class Plot2:
     def __init__(self):
         self.x_f2 = np.arange(1, 10000, 1)
+        self.zzz = None
 
     def f2(self, m):
+        self.zzz = None
         alpha = np.arctan(c.r_bh_screen / c.s)
         return - alpha / 2 + np.power((alpha / 2) ** 2 + 4 * m * c.g / c.d / (c.c ** 2), 1 / 2)
 
@@ -41,9 +45,11 @@ class Plot2:
 class Plot3:
     def __init__(self):
         self.x_f3 = np.arange(1, 1000, 1)
+        self.zzz = None
 
     def f3(self, d):
         alpha = np.arctan(c.r_bh_screen / c.s)
+        self.zzz = None
         return - alpha / 2 + np.power((alpha / 2) ** 2 + 4 * c.m * c.g / d / (c.c ** 2), 1 / 2)
 
     def draw_plot(self):
