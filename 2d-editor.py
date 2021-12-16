@@ -28,6 +28,7 @@ def output():
         ar[glowing_dots[k][0], glowing_dots[k][1]] = (255, 255, 255)
     del ar
     screen.blit(zone_of_influence, (,))
+    circle(screen, (0,0,0), (LENGTH/2, HEIGHT/2), black_hole_R)
     pygame.display.flip()
     
 
