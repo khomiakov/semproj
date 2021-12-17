@@ -56,7 +56,8 @@ def scale(n):
         [0, 0, 0, 1]
     ])
 
-def generate_3D_sky():
+
+def generate_3d_sky():
     a = np.random.sample((3000, 4))
     r = 1
     for i in range(len(a)):
