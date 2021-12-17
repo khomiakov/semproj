@@ -46,7 +46,6 @@ def main():
             else:
                 draw_buttons_and_stuff_2(screen)
         if a.draw_black_hole is True:
-            print(c.width, c.height)
             input1()
             output()
 

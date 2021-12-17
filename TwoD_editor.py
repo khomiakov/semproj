@@ -40,7 +40,6 @@ def output():
     screen.blit(zone_of_influence, (c.x0 - 2*c.r_bh_screen, c.y0 - 2*c.r_bh_screen))
     pygame.draw.circle(screen, (0, 0, 0), (c.x0, c.y0), c.r_bh_screen)
     pygame.display.flip()
-    print(glowing_dots)
     glowing_dots.clear()
 
     
