@@ -14,8 +14,8 @@ Button3 = Button()
 Button4 = Button()
 Button.create_button(Button1, screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0, "Визуализация эффекта",
                      (255, 255, 255))
-Button.create_button(Button2, screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
-Button.create_button(Button3, screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
+Button.create_button(Button2, screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
+Button.create_button(Button3, screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
 Button.create_button(Button4, screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
 pygame.display.flip()
 fontObj = pygame.font.Font('freesansbold.ttf', 10)
@@ -36,7 +36,7 @@ while not finished:
         elif event.type == MOUSEBUTTONDOWN:
             if Button1.pressed(pygame.mouse.get_pos()):
                 a = SoftwareRender(screen)
-                a.run()
+                a.run(finished)
             if Button2.pressed(pygame.mouse.get_pos()):
                 plot1()
                 #input1()
