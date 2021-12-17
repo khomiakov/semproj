@@ -1,3 +1,4 @@
+"""Модуль хранит класс Button"""
 import pygame
 from pygame.locals import *
 
@@ -40,28 +41,3 @@ class Button:
                 else: return False
             else: return False
         else: return False
-
-
-"""screen = pygame.display.set_mode((801, 400))
-pygame.display.set_caption("Гравитационное линзирование")
-Button1 = Button()
-Button2 = Button()
-Button.create_button(Button1, screen, (40,40,40), 600, 300, 200,    100,    0,        "Сделать снимок", (255,255,255))
-Button.create_button(Button2, screen, (40,40,40), 400, 300, 200,    100,    0,        "Дополнительная визуализация", (255,255,255))
-pygame.display.flip()
-
-finished = False
-clock = pygame.time.Clock()
-while not finished:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            finished = True
-        elif event.type == MOUSEBUTTONDOWN:
-                    if Button1.pressed(pygame.mouse.get_pos()):
-                        print ("Снимок")
-                    if Button2.pressed(pygame.mouse.get_pos()):
-                        print ("Введите имя объекта, для которого Вы хотите построить график: ")
-                        print("График для " + input() + ":")
-
-    
-pygame.quit()"""
