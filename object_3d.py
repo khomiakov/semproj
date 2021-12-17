@@ -1,4 +1,5 @@
-"""Этот модуль отвечает за создание 3D объекта, как массива данных
+"""
+Этот модуль отвечает за создание 3D объекта, как массива данных
 """
 import pygame as pg
 from matrix_functions import *
@@ -32,7 +33,8 @@ class Object3D:
         self.screen_projection()
 
     def screen_projection(self):
-        """Функция проецирует вержины на экран зрителя
+        """
+        Функция проецирует вержины на экран зрителя
         """
         vertexes = self.vertexes @ self.render.camera.camera_matrix()
         vertexes = vertexes @ self.render.projection.projection_matrix
@@ -56,33 +58,39 @@ class Object3D:
                     pg.draw.circle(self.render.screen, pg.Color('white'), vertex, 2)
 
     def translate(self, pos):
-        """Функция перемещения вершин в пространстве
+        """
+        Функция перемещения вершин в пространстве
         """
         self.vertexes = self.vertexes @ translate(pos)
 
     def scale(self, scale_to):
-        """Функция выравнивания вершин в пространстве
+        """
+        Функция выравнивания вершин в пространстве
         """
         self.vertexes = self.vertexes @ scale(scale_to)
 
     def rotate_x(self, angle):
-        """Функция поворота вершин в пространстве вокруг х
+        """
+        Функция поворота вершин в пространстве вокруг х
         """
         self.vertexes = self.vertexes @ rotate_x(angle)
 
     def rotate_y(self, angle):
-        """Функция поворота вершин в пространстве вокруг у
+        """
+        Функция поворота вершин в пространстве вокруг у
         """
         self.vertexes = self.vertexes @ rotate_y(angle)
 
     def rotate_z(self, angle):
-        """Функция поворота вершин в пространстве вокруг z
+        """
+        Функция поворота вершин в пространстве вокруг z
         """
         self.vertexes = self.vertexes @ rotate_z(angle)
 
 
 class Axes(Object3D):
-    """Функция рисующая оси координат в пространстве
+    """
+    Функция рисующая оси координат в пространстве
     """
 
     def __init__(self, render):
