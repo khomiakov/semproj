@@ -5,7 +5,7 @@ from Constants import *
 from TDmain import *
 
 pygame.init()
-screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((1366, 768))
 pygame.display.set_caption("Гравитационное линзирование")
 Button1 = Button()
 Button2 = Button()
