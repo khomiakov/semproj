@@ -3,7 +3,7 @@ from plots import *
 from pygame.locals import *
 from buttons import *
 from Constants import *
-from 3Dmain import *
+from TDmain import *
 pygame.init()
 
 
