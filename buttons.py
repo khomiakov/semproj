@@ -76,7 +76,6 @@ def draw_buttons_and_stuff(screen):
     Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
     Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
     Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
-    pygame.display.flip()
     font_obj = pygame.font.Font('freesansbold.ttf', 10)
     text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
     text_rect_obj = text_surface_obj.get_rect()

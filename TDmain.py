@@ -3,11 +3,11 @@ from camera import *
 from projection import *
 import pygame as pg
 from Constants import *
-  
+pg.init()
+
 
 class SoftwareRender:
     def __init__(self, screen):
-        pg.init()
         self.RES = self.WIDTH, self.HEIGHT = c.width, c.height
         self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
         self.FPS = 60
@@ -17,6 +17,7 @@ class SoftwareRender:
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
         self.object = Object3D(self, generate_3d_sky())
+        self.go = False
 
     def create_objects(self):
         self.camera = Camera(self, [0, 0, 0])
@@ -39,14 +40,6 @@ class SoftwareRender:
         self.screen.fill((2, 13, 28))
         self.object.draw()
 
-    def run(self, finished):
-        while not finished:
-            self.draw()
-            self.camera.control()
-            [exit() for i in pg.event.get() if i.type == pg.QUIT]
-            pg.display.set_caption(str(self.clock.get_fps()))
-            pg.display.flip()
-            self.clock.tick(self.FPS)
-            for event in pg.event.get():
-                if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
-                    finished = True
+    def run(self):
+        self.draw()
+        self.camera.control()
