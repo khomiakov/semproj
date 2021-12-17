@@ -2,7 +2,6 @@ from object_3d import *
 from camera import *
 from projection import *
 import pygame as pg
-
   
 
 class SoftwareRender:
@@ -14,13 +13,14 @@ class SoftwareRender:
         self.screen = screen
         self.clock = pg.time.Clock()
         self.create_objects()
+        self.camera = Camera(self, [0, 0, 0])
+        self.projection = Projection(self)
+        self.object = Object3D(self, generate_3D_sky())
 
     def create_objects(self):
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
-        #self.object = Object3D(self, [(0, 0, 0,1), (0, 0, 1,1), (0, 1, 0,1), (0, 1, 1,1), (1, 0, 0,1), (1, 0, 1,1), (1, 1, 0,1), (1, 1 ,1,1)], [(1, 2, 3)])
-        self.object = Object3D(self, generate_3D_sky()) 
-        #self.object = self.get_object_from_file('resources/t_34_obj.obj')
+        self.object = Object3D(self, generate_3D_sky())
         self.object.rotate_y(-math.pi / 4)
 
     def get_object_from_file(self, filename):
@@ -38,12 +38,14 @@ class SoftwareRender:
         self.screen.fill(pg.Color('darkslategray'))
         self.object.draw()
 
-    def run(self):
-        while True:
+    def run(self, finished):
+        while not finished:
             self.draw()
             self.camera.control()
             [exit() for i in pg.event.get() if i.type == pg.QUIT]
             pg.display.set_caption(str(self.clock.get_fps()))
             pg.display.flip()
             self.clock.tick(self.FPS)
-
+            for event in pg.event.get():
+                if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
+                    finished = True
