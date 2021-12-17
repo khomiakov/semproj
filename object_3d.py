@@ -1,3 +1,5 @@
+"""Этот модуль отвечает за создание 3D объекта, как массива данных
+"""
 import pygame as pg
 from matrix_functions import *
 from numba import njit
@@ -10,6 +12,12 @@ def any_func(arr, a, b):
 
 class Object3D:
     def __init__(self, render, vertexes='', faces=''):
+        """
+        self.vertexes - массив вершин в ЛСО
+        self.faces - массив связей вершин (полигонов)
+        self.movement_flag - переменная, отвечающая за возможность двигать объект 
+        self.draw_vertexes - переменная, отвечающая за отрисовку вершин. 
+        """
         self.render = render
         self.vertexes = np.array([np.array(v) for v in vertexes])
         self.faces = np.array([np.array(face) for face in faces])
@@ -23,11 +31,9 @@ class Object3D:
     def draw(self):
         self.screen_projection()
 
-    def movement(self):
-        if self.movement_flag:
-            self.rotate_y(-(pg.time.get_ticks() % 0.005))
-
     def screen_projection(self):
+        """Функция проецирует вержины на экран зрителя
+        """
         vertexes = self.vertexes @ self.render.camera.camera_matrix()
         vertexes = vertexes @ self.render.projection.projection_matrix
         vertexes /= vertexes[:, -1].reshape(-1, 1)
@@ -50,22 +56,35 @@ class Object3D:
                     pg.draw.circle(self.render.screen, pg.Color('white'), vertex, 2)
 
     def translate(self, pos):
+        """Функция перемещения вершин в пространстве
+        """
         self.vertexes = self.vertexes @ translate(pos)
 
     def scale(self, scale_to):
+        """Функция выравнивания вершин в пространстве
+        """
         self.vertexes = self.vertexes @ scale(scale_to)
 
     def rotate_x(self, angle):
+        """Функция поворота вершин в пространстве вокруг х
+        """
         self.vertexes = self.vertexes @ rotate_x(angle)
 
     def rotate_y(self, angle):
+        """Функция поворота вершин в пространстве вокруг у
+        """
         self.vertexes = self.vertexes @ rotate_y(angle)
 
     def rotate_z(self, angle):
+        """Функция поворота вершин в пространстве вокруг z
+        """
         self.vertexes = self.vertexes @ rotate_z(angle)
 
 
 class Axes(Object3D):
+    """Функция рисующая оси координат в пространстве
+    """
+
     def __init__(self, render):
         super().__init__(render)
         self.vertexes = np.array([(0, 0, 0, 1), (1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1)])
