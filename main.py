@@ -3,9 +3,10 @@ from pygame.locals import *
 from buttons import *
 from Constants import *
 from TDmain import *
+from TwoD_editor import *
 
 pygame.init()
-screen = pygame.display.set_mode((1366, 768))
+screen = pygame.display.set_mode((c.width, c.height))
 pygame.display.set_caption("Гравитационное линзирование")
 Button1 = Button()
 Button2 = Button()
@@ -38,6 +39,9 @@ while not finished:
                 a.run()
             if Button2.pressed(pygame.mouse.get_pos()):
                 plot1()
+                #input1()
+                #место для преобразований
+                #output()
             elif Button3.pressed(pygame.mouse.get_pos()):
                 plot2()
             elif Button4.pressed(pygame.mouse.get_pos()):
