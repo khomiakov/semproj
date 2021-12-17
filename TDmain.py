@@ -10,7 +10,6 @@ class SoftwareRender:
     def __init__(self, screen):
         self.RES = self.WIDTH, self.HEIGHT = c.width, c.height
         self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
-        self.FPS = 60
         self.screen = screen
         self.clock = pg.time.Clock()
         self.create_objects()
@@ -38,7 +37,7 @@ class SoftwareRender:
         return Object3D(self, vertex, faces)
 
     def draw(self):
-        self.screen.fill((2, 13, 28))
+        self.screen.fill(c.sky_color)
         self.object.draw()
 
     def run(self):

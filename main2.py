@@ -1,9 +1,8 @@
 from plots import *
 from pygame.locals import *
 from buttons import *
-# from model import *
+from model import *
 from TDmain import *
-from TwoD_editor import *
 
 pygame.init()
 
@@ -45,9 +44,9 @@ def main():
                 draw_buttons_and_stuff_1(screen)
             else:
                 draw_buttons_and_stuff_2(screen)
-        if a.draw_black_hole is True:
-            input1()
-            output()
+                draw_black_hole(screen)
+                model(screen)
+
 
 main()
 pygame.quit()

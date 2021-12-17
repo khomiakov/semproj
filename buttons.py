@@ -110,4 +110,4 @@ def draw_buttons_and_stuff_2(screen):
 
 
 def draw_black_hole(screen):
-    pygame.draw.circle(screen, (0, 0, 0), (c.width / 2, c.height / 2), 35)
+    pygame.draw.circle(screen, (0, 0, 0), (c.x0, c.y0), c.r_bh_screen)
