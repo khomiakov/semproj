@@ -22,7 +22,7 @@ def plot3():
 
 screen = pygame.display.set_mode((c.width, c.height))
 pygame.display.set_caption("Гравитационное линзирование")
-Button1 = Button()
+#Button1 = Button()
 Button2 = Button()
 Button3 = Button()
 Button4 = Button()
