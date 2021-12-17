@@ -1,7 +1,7 @@
 from plots import *
 from pygame.locals import *
 from buttons import *
-from Constants import *
+from model import *
 from TDmain import *
 from TwoD_editor import *
 
@@ -28,6 +28,7 @@ finished = False
 clock = pygame.time.Clock()
 
 while not finished:
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = True
@@ -37,11 +38,11 @@ while not finished:
             if Button1.pressed(pygame.mouse.get_pos()):
                 a = SoftwareRender(screen)
                 a.run(finished)
+                input1(screen)
+                lensing(glowing_dots)
+                output(screen)
             if Button2.pressed(pygame.mouse.get_pos()):
                 plot1()
-                #input1()
-                #место для преобразований
-                #output()
             elif Button3.pressed(pygame.mouse.get_pos()):
                 plot2()
             elif Button4.pressed(pygame.mouse.get_pos()):
