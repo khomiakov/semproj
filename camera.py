@@ -1,13 +1,14 @@
 import pygame as pg
 from matrix_functions import *
 
+
 class Camera:
     def __init__(self, render, position):
         self.render = render
         self.position = np.array([*position, 1.0])
-        self.forward = np.array([0, 0, 1, 1]) #z
-        self.up = np.array([0, 1, 0, 1]) #y
-        self.right = np.array([1, 0, 0, 1]) #x
+        self.forward = np.array([0, 0, 1, 1])   # z
+        self.up = np.array([0, 1, 0, 1])        # y
+        self.right = np.array([1, 0, 0, 1])     # x
         self.h_fov = math.pi / 3
         self.v_fov = self.h_fov * (render.HEIGHT / render.WIDTH)
         self.near_plane = 0.1
@@ -29,7 +30,6 @@ class Camera:
             self.position += self.up * self.moving_speed
         if key[pg.K_e]:
             self.position -= self.up * self.moving_speed
-
         if key[pg.K_LEFT]:
             self.camera_yaw(-self.rotation_speed)
         if key[pg.K_RIGHT]:
@@ -47,7 +47,7 @@ class Camera:
 
     def camera_pitch(self, angle):
         rotate = rotate_x(angle)
-        self.forward = self.forward @ rotate  #@ self.camera_matrix()
+        self.forward = self.forward @ rotate  # @ self.camera_matrix()
         self.right = self.right @ rotate
         self.up = self.up @ rotate
 
@@ -55,7 +55,7 @@ class Camera:
         x, y, z, w = self.position
         return np.array([
             [1, 0, 0, 0],
-            [0, 1, 0, 0],   #[0, 1, 0, 1]
+            [0, 1, 0, 0],   # [0, 1, 0, 1]
             [0, 0, 1, 0],
             [-x, -y, -z, 1]
         ])
