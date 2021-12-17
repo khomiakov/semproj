@@ -1,7 +1,5 @@
 """Модуль хранит класс Button"""
 import pygame
-from pygame.locals import *
-from Constants import *
 
 pygame.init()
 
@@ -48,21 +46,3 @@ class Button:
                 return False
         else:
             return False
-
-
-def import_buttons_and_text(screen):
-    # Button1 = Button()
-    Button2 = Button()
-    Button3 = Button()
-    Button4 = Button()
-    # Button.create_button(Button1, screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0, "Визуализация эффекта", (255, 255, 255))
-    Button.create_button(Button2, screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
-    Button.create_button(Button3, screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
-    Button.create_button(Button4, screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
-    pygame.display.flip()
-
-    fontObj = pygame.font.Font('freesansbold.ttf', 10)
-    textSurfaceObj = fontObj.render('Нажмите для построения графиков:', True, (255, 255, 255))
-    textRectObj = textSurfaceObj.get_rect()
-    textRectObj.center = (105, c.height - 70)
-    screen.blit(textSurfaceObj, textRectObj)
