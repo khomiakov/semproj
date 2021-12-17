@@ -14,10 +14,11 @@ class Camera:
         self.near_plane = 0.1
         self.far_plane = 100
         self.moving_speed = 0.3
-        self.rotation_speed = 0.015
+        self.rotation_speed = 0.005
 
     def control(self):
         key = pg.key.get_pressed()
+        """
         if key[pg.K_a]:
             self.position -= self.right * self.moving_speed
         if key[pg.K_d]:
@@ -30,6 +31,7 @@ class Camera:
             self.position += self.up * self.moving_speed
         if key[pg.K_e]:
             self.position -= self.up * self.moving_speed
+        """
         if key[pg.K_LEFT]:
             self.camera_yaw(-self.rotation_speed)
         if key[pg.K_RIGHT]:
