@@ -1,13 +1,14 @@
-"""Модуль хранит класс Button"""
-import pygame
-
+"""
+Модуль хранит класс Button
+"""
+from Constants import *
 pygame.init()
 
 
 class Button:
     def __init__(self):
-        self.rect = None
         self.zzz = None
+        self.rect = None
     
     def create_button(self, surface, color, x, y, length, height, width, text, text_color):
         surface = self.draw_button(surface, color, length, height, x, y, width)
@@ -52,3 +53,32 @@ class Button:
                 return False
         else:
             return False
+
+
+buttons_array = []
+
+
+def initiate_buttons():
+    global buttons_array
+    button1 = Button()
+    button2 = Button()
+    button3 = Button()
+    button4 = Button()
+    buttons_array.append(button1)
+    buttons_array.append(button2)
+    buttons_array.append(button3)
+    buttons_array.append(button4)
+
+
+def draw_buttons_and_stuff(screen):
+    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
+                         "Визуализация эффекта", (255, 255, 255))
+    Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
+    Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
+    Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
+    pygame.display.flip()
+    font_obj = pygame.font.Font('freesansbold.ttf', 10)
+    text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
+    text_rect_obj = text_surface_obj.get_rect()
+    text_rect_obj.center = (105, c.height - 70)
+    screen.blit(text_surface_obj, text_rect_obj)

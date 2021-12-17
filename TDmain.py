@@ -2,12 +2,13 @@ from object_3d import *
 from camera import *
 from projection import *
 import pygame as pg
+from Constants import *
   
 
 class SoftwareRender:
     def __init__(self, screen):
         pg.init()
-        self.RES = self.WIDTH, self.HEIGHT = 800, 400
+        self.RES = self.WIDTH, self.HEIGHT = c.width, c.height
         self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
         self.FPS = 60
         self.screen = screen
@@ -15,12 +16,12 @@ class SoftwareRender:
         self.create_objects()
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
-        self.object = Object3D(self, generate_3D_sky())
+        self.object = Object3D(self, generate_3d_sky())
 
     def create_objects(self):
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
-        self.object = Object3D(self, generate_3D_sky())
+        self.object = Object3D(self, generate_3d_sky())
         self.object.rotate_y(-math.pi / 4)
 
     def get_object_from_file(self, filename):
@@ -35,7 +36,7 @@ class SoftwareRender:
         return Object3D(self, vertex, faces)
 
     def draw(self):
-        self.screen.fill(pg.Color('darkslategray'))
+        self.screen.fill((2, 13, 28))
         self.object.draw()
 
     def run(self, finished):
@@ -49,4 +50,3 @@ class SoftwareRender:
             for event in pg.event.get():
                 if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
                     finished = True
-

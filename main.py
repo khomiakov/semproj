@@ -38,9 +38,9 @@ while not finished:
             if Button1.pressed(pygame.mouse.get_pos()):
                 a = SoftwareRender(screen)
                 a.run(finished)
-                input1(screen)
-                lensing(glowing_dots)
-                output(screen)
+                # input1(screen)
+                # lensing(glowing_dots)
+                # output(screen)
             if Button2.pressed(pygame.mouse.get_pos()):
                 plot1()
             elif Button3.pressed(pygame.mouse.get_pos()):
@@ -49,7 +49,3 @@ while not finished:
                 plot3()
 
 pygame.quit()
-
-
-    
-

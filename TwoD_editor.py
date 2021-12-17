@@ -6,7 +6,6 @@
 Второй этап: model возвращает новые координаты цветных пикселей,
 2d-editor отображает изменения на экране.
 """
-import pygame
 from Constants import *
 
 WHITE = 16777215
