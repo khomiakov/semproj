@@ -51,7 +51,7 @@ while not finished:
             finished = True
         elif event.type == MOUSEBUTTONDOWN:
             if Button1.pressed(pygame.mouse.get_pos()):
-                a = SoftwareRender()
+                a = SoftwareRender(screen)
                 a.run()
             if (event.type == pygame.KEYDOWN and event.key == pygame.K_F1) or Button2.pressed(pygame.mouse.get_pos()):
                 plot1()
