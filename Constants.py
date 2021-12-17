@@ -18,7 +18,7 @@ class Constants:
         self.y0 = self.height / 2       # координата y центра чёрной дыры на экране
         self.s = 1500                   # абстрактное расстояние до экрана
         self.r_bh_screen = 50           # радиус чёрной дыры в экранных координатах
-        self.fps = 30
+        self.fps = 60
 
 
 c = Constants()

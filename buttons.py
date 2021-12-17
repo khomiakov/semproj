@@ -81,3 +81,33 @@ def draw_buttons_and_stuff(screen):
     text_rect_obj = text_surface_obj.get_rect()
     text_rect_obj.center = (105, c.height - 70)
     screen.blit(text_surface_obj, text_rect_obj)
+
+
+def draw_buttons_and_stuff_1(screen):
+    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
+                         "Добавить чёрную дыру", (255, 255, 255))
+    Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
+    Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
+    Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
+    font_obj = pygame.font.Font('freesansbold.ttf', 10)
+    text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
+    text_rect_obj = text_surface_obj.get_rect()
+    text_rect_obj.center = (105, c.height - 70)
+    screen.blit(text_surface_obj, text_rect_obj)
+
+
+def draw_buttons_and_stuff_2(screen):
+    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
+                         "Убрать чёрную дыру", (255, 255, 255))
+    Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
+    Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
+    Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
+    font_obj = pygame.font.Font('freesansbold.ttf', 10)
+    text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
+    text_rect_obj = text_surface_obj.get_rect()
+    text_rect_obj.center = (105, c.height - 70)
+    screen.blit(text_surface_obj, text_rect_obj)
+
+
+def draw_black_hole(screen):
+    pygame.draw.circle(screen, (0, 0, 0), (c.width / 2, c.height / 2), 35)

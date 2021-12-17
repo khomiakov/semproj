@@ -18,6 +18,7 @@ class SoftwareRender:
         self.projection = Projection(self)
         self.object = Object3D(self, generate_3d_sky())
         self.go = False
+        self.draw_black_hole = False
 
     def create_objects(self):
         self.camera = Camera(self, [0, 0, 0])
