@@ -8,15 +8,18 @@
 """
 from Constants import *
 
+
+
 WHITE = 16777215
-glowing_dots = []
-zone_of_influence = pygame.Surface((2*c.r_bh_screen, 2*c.r_bh_screen))
+zone_of_influence = pygame.Surface((4*c.r_bh_screen, 4*c.r_bh_screen))
+screen = pygame.display.set_mode((c.width, c.height))
 
 
-def input1(screen):
+def input1():
     """"В зоне действия эффекта ищет светящиеся объекты.
     Из массива всех пикселей оставляет только их."""
     global glowing_dots
+    glowing_dots = []
     ar = pygame.PixelArray(screen)
     for i in range(len(ar)):
         for j in range(len(ar[0])): 
@@ -25,15 +28,20 @@ def input1(screen):
                 glowing_dots.append([i, j])
 
 
-def output(screen):
+def output():
     """Отрисовывает обновленный участок."""
     ar = pygame.PixelArray(zone_of_influence)
     ar[:] = 0
     for k in range(len(glowing_dots)):
+        glowing_dots[k][0] += - int((c.width - 4*c.r_bh_screen)/2)
+        glowing_dots[k][1] += - int((c.height - 4*c.r_bh_screen)/2)
         ar[glowing_dots[k][0], glowing_dots[k][1]] = (255, 255, 255)
     del ar
     screen.blit(zone_of_influence, (c.x0 - 2*c.r_bh_screen, c.y0 - 2*c.r_bh_screen))
     pygame.draw.circle(screen, (0, 0, 0), (c.x0, c.y0), c.r_bh_screen)
     pygame.display.flip()
+    print(glowing_dots)
+    glowing_dots.clear()
+
     
 

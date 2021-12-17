@@ -4,6 +4,7 @@ from buttons import *
 # from model import *
 from TDmain import *
 from TwoD_editor import *
+
 pygame.init()
 
 
@@ -26,10 +27,7 @@ def main():
                 finished = True
             elif event.type == MOUSEBUTTONDOWN:
                 if buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is False:
-                    a.go = True
-                    # input1(screen)
-                    # lensing(glowing_dots)
-                    # output(screen)
+                    a.go = True                   
                 elif buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is True:
                     if a.draw_black_hole is False:
                         a.draw_black_hole = True
@@ -48,8 +46,9 @@ def main():
             else:
                 draw_buttons_and_stuff_2(screen)
         if a.draw_black_hole is True:
-            draw_black_hole(screen)
-
+            print(c.width, c.height)
+            input1()
+            output()
 
 main()
 pygame.quit()
