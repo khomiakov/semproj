@@ -19,7 +19,6 @@ def input1(screen):
     Из массива всех пикселей оставляет только их."""
     global glowing_dots
     ar = pygame.PixelArray(screen)
-    glowing_dots = []
     for i in range(len(ar)):
         for j in range(len(ar[0])): 
             if ar[i,j] == WHITE and (i > c.x0 - 2*c.r_bh_screen) and i < (c.x0 + 2*c.r_bh_screen) \
