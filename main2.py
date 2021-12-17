@@ -26,7 +26,6 @@ def main():
                 finished = True
             elif event.type == MOUSEBUTTONDOWN:
                 if buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is False:
-                    a.draw_black_hole = True
                     a.go = True
                     # input1(screen)
                     # lensing(glowing_dots)
@@ -36,7 +35,6 @@ def main():
                         a.draw_black_hole = True
                     else:
                         a.draw_black_hole = False
-
                 elif buttons_array[1].pressed(pygame.mouse.get_pos()):
                     plot1()
                 elif buttons_array[2].pressed(pygame.mouse.get_pos()):
