@@ -47,5 +47,3 @@ class SoftwareRender:
             pg.display.flip()
             self.clock.tick(self.FPS)
 
- 
-
