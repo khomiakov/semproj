@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 from Constants import *
 
 
+"""
+Данный модуль отвечает за реализацию графиков с помощью matplotlib
+"""
+
+
 class Plot1:
     def __init__(self):
         self.x_f1 = np.arange(1, 3600, 1 / 60)
@@ -60,3 +65,18 @@ class Plot3:
         plt.grid(True)
         plt.legend(loc='best', fontsize=12)
         plt.show()
+
+
+def plot1():
+    p = Plot1()
+    p.draw_plot()
+
+
+def plot2():
+    p = Plot2()
+    p.draw_plot()
+
+
+def plot3():
+    p = Plot3()
+    p.draw_plot()

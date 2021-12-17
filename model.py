@@ -2,6 +2,9 @@ import numpy as np
 from Constants import *
 
 
+"""Модуль отвечает за функцию преобразования координат"""
+
+
 def lensing(array):
     for dot in array:
         r0 = np.power((c.x0 - dot[0]) ** 2 + (c.y0 - dot[1]) ** 2, 1 / 2)
