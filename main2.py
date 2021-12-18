@@ -3,7 +3,6 @@ from pygame.locals import *
 from buttons import *
 from model import *
 from TDmain import *
-
 pygame.init()
 
 
@@ -44,8 +43,8 @@ def main():
                 draw_buttons_and_stuff_1(screen)
             else:
                 draw_buttons_and_stuff_2(screen)
-                draw_black_hole(screen)
                 model(screen)
+                draw_black_hole(screen)
 
 
 main()

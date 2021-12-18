@@ -34,7 +34,7 @@ class Plot2:
 
     def f2(self, m):
         self.zzz = None
-        alpha = c.r_bh / c.d
+        alpha = c.r_bh_screen / c.s
         return - alpha / 2 + np.power((alpha / 2) ** 2 + 4 * m * c.g / c.d / (c.c ** 2), 1 / 2)
 
     def draw_plot(self):
@@ -53,7 +53,7 @@ class Plot3:
         self.zzz = None
 
     def f3(self, d):
-        alpha = c.r_bh / c.d
+        alpha = c.r_bh_screen / c.s
         self.zzz = None
         return - alpha / 2 + np.power((alpha / 2) ** 2 + 4 * c.m * c.g / d / (c.c ** 2), 1 / 2)
 
