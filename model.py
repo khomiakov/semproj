@@ -17,8 +17,8 @@ def lensing(array):
 def model(screen):
     px_array = pygame.PixelArray(screen)
     white_pixels_array = []
-    for i in range(c.x0 - 100, c.x0 + 100 + 1):
-        for j in range(c.y0 - 100, c.y0 + 100 + 1):
+    for i in range(c.x0 - 3 * c.r_bh_screen, c.x0 + 3 * c.r_bh_screen + 1):
+        for j in range(c.y0 - 3 * c.r_bh_screen, c.y0 + 3 * c.r_bh_screen + 1):
             if px_array[i, j] == screen.map_rgb(c.white):
                 white_pixels_array.append([i, j])
             px_array[i, j] = c.sky_color

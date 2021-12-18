@@ -87,18 +87,3 @@ class Object3D:
         Функция поворота вершин в пространстве вокруг z
         """
         self.vertexes = self.vertexes @ rotate_z(angle)
-
-
-class Axes(Object3D):
-    """
-    Функция рисующая оси координат в пространстве
-    """
-
-    def __init__(self, render):
-        super().__init__(render)
-        self.vertexes = np.array([(0, 0, 0, 1), (1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1)])
-        self.faces = np.array([(0, 1), (0, 2), (0, 3)])
-        self.colors = [pg.Color('red'), pg.Color('green'), pg.Color('blue')]
-        self.color_faces = [(color, face) for color, face in zip(self.colors, self.faces)]
-        self.draw_vertexes = False
-        self.label = 'XYZ'
