@@ -13,25 +13,11 @@ class Camera:
         self.v_fov = self.h_fov * (render.HEIGHT / render.WIDTH)
         self.near_plane = 0.1
         self.far_plane = 100
-        self.moving_speed = 0.3
-        self.rotation_speed = 0.005
+        self.moving_speed = 0.2
+        self.rotation_speed = 0.004
 
     def control(self):
         key = pg.key.get_pressed()
-        """
-        if key[pg.K_a]:
-            self.position -= self.right * self.moving_speed
-        if key[pg.K_d]:
-            self.position += self.right * self.moving_speed
-        if key[pg.K_w]:
-            self.position += self.forward * self.moving_speed
-        if key[pg.K_s]:
-            self.position -= self.forward * self.moving_speed
-        if key[pg.K_q]:
-            self.position += self.up * self.moving_speed
-        if key[pg.K_e]:
-            self.position -= self.up * self.moving_speed
-        """
         if key[pg.K_LEFT]:
             self.camera_yaw(-self.rotation_speed)
         if key[pg.K_RIGHT]:
@@ -49,10 +35,7 @@ class Camera:
 
     def camera_pitch(self, angle):
         rotate = rotate_x(angle)
-        #self.forward = self.forward @ rotate  
-        #self.right = self.right @ rotate
-        #self.up = self.up @ rotate
-        a =  rotate @ transpose(self.rotate_matrix())
+        a = rotate @ transpose(self.rotate_matrix())
         self.forward = a[2][0], a[2][1], a[2][2], 1
         self.right = a[0][0], a[0][1], a[0][2], 1
         self.up = a[1][0], a[1][1], a[1][2], 1

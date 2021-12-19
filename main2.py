@@ -11,7 +11,8 @@ def main():
     pygame.display.set_caption("Гравитационное линзирование")
     finished = False
     clock = pygame.time.Clock()
-    a = SoftwareRender(screen)
+    visualization = VisualEngine(screen)
+    mapping = create_mapping()
     initiate_buttons()
     draw_buttons_and_stuff(screen)
     while not finished:
@@ -21,31 +22,31 @@ def main():
             if event.type == pygame.QUIT:
                 finished = True
             elif event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
-                a.go = False
+                visualization.go = False
                 finished = True
             elif event.type == MOUSEBUTTONDOWN:
-                if buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is False:
-                    a.go = True
-                elif buttons_array[4].pressed(pygame.mouse.get_pos()) and a.go is False:
+                if buttons_array[0].pressed(pygame.mouse.get_pos()) and visualization.go is False:
+                    visualization.go = True
+                elif buttons_array[4].pressed(pygame.mouse.get_pos()) and visualization.go is False:
                     give_information()
-                elif buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is True:
-                    if a.draw_black_hole is False:
-                        a.draw_black_hole = True
+                elif buttons_array[0].pressed(pygame.mouse.get_pos()) and visualization.go is True:
+                    if visualization.draw_black_hole is False:
+                        visualization.draw_black_hole = True
                     else:
-                        a.draw_black_hole = False
+                        visualization.draw_black_hole = False
                 elif buttons_array[1].pressed(pygame.mouse.get_pos()):
                     plot1()
                 elif buttons_array[2].pressed(pygame.mouse.get_pos()):
                     plot2()
                 elif buttons_array[3].pressed(pygame.mouse.get_pos()):
                     plot3()
-        if a.go is True:
-            a.run()
-            if a.draw_black_hole is False:
+        if visualization.go is True:
+            visualization.run()
+            if visualization.draw_black_hole is False:
                 draw_buttons_and_stuff_1(screen)
             else:
                 draw_buttons_and_stuff_2(screen)
-                model(screen)
+                model(screen, mapping)
                 draw_black_hole(screen)
 
 

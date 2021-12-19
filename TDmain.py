@@ -6,7 +6,7 @@ from Constants import *
 pg.init()
 
 
-class SoftwareRender:
+class VisualEngine:
     def __init__(self, screen):
         self.RES = self.WIDTH, self.HEIGHT = c.width, c.height
         self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
