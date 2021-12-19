@@ -18,11 +18,12 @@ class Plot1:
 
     def draw_plot(self):
         plt.figure(figsize=(20, 7))
-        plt.plot(self.x_f1, self.f1(self.x_f1 * np.pi / 180 / 3600) * 180 * 3600 / np.pi, label=r'$f(a)$')
-        plt.xlabel(r'$a(Arc Seconds)$', fontsize=14)
-        plt.ylabel(r'$f(Arc Seconds)$', fontsize=14)
+        plt.plot(self.x_f1, self.f1(self.x_f1 * np.pi / 180 / 3600) * 180 * 3600 / np.pi, label=r'F(A)')
+        plt.xlabel(r'A(arc seconds)', fontsize=14)
+        plt.ylabel(r'F(arc seconds)', fontsize=14)
         plt.grid(True)
         plt.legend(loc='best', fontsize=12)
+        plt.title('График зависимости угла отклонения звезды F от её углового расстояния до центра чёрной дыры A')
         plt.show()
 
 
@@ -38,11 +39,12 @@ class Plot2:
 
     def draw_plot(self):
         plt.figure(figsize=(20, 7))
-        plt.plot(self.x_f2, self.f2(self.x_f2 * c.m) * 180 * 3600 / np.pi, label=r'$f(m)$')
-        plt.xlabel(r'$m(Solar Masses)$', fontsize=14)
-        plt.ylabel(r'$f(Arc Seconds)$', fontsize=14)
+        plt.plot(self.x_f2, self.f2(self.x_f2 * c.m) * 180 * 3600 / np.pi, label=r'F(M)')
+        plt.xlabel(r'M(solar masses)', fontsize=14)
+        plt.ylabel(r'F(arc seconds)', fontsize=14)
         plt.grid(True)
         plt.legend(loc='best', fontsize=12)
+        plt.title('График зависимости угла отклонения звезды F от массы чёрной дыры M')
         plt.show()
 
 
@@ -58,11 +60,12 @@ class Plot3:
 
     def draw_plot(self):
         plt.figure(figsize=(20, 7))
-        plt.plot(self.x_f3, self.f3(self.x_f3 * c.d) * 180 * 3600 / np.pi, label=r'$f(d)$')
-        plt.xlabel(r'$d(10a.u.)$', fontsize=14)
-        plt.ylabel(r'$f(Arc Seconds)$', fontsize=14)
+        plt.plot(self.x_f3, self.f3(self.x_f3 * c.d) * 180 * 3600 / np.pi, label=r'F(D)')
+        plt.xlabel(r'D(a. u.)', fontsize=14)
+        plt.ylabel(r'F(arc seconds)', fontsize=14)
         plt.grid(True)
         plt.legend(loc='best', fontsize=12)
+        plt.title('График зависимости угла отклонения звезды F от расстояния от наблюдателя до чёрной дыры')
         plt.show()
 
 
