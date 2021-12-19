@@ -96,6 +96,7 @@ def draw_buttons_and_stuff(screen, i):
     text_rect_obj = text_surface_obj.get_rect()
     text_rect_obj.center = (105, c.height - 70)
     screen.blit(text_surface_obj, text_rect_obj)
+    
 
 def draw_black_hole(screen):
     pygame.draw.circle(screen, (0, 0, 0), (c.x0, c.y0), c.r_bh_screen)
