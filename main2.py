@@ -25,7 +25,9 @@ def main():
                 finished = True
             elif event.type == MOUSEBUTTONDOWN:
                 if buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is False:
-                    a.go = True                   
+                    a.go = True
+                elif buttons_array[4].pressed(pygame.mouse.get_pos()) and a.go is False:
+                    give_information()
                 elif buttons_array[0].pressed(pygame.mouse.get_pos()) and a.go is True:
                     if a.draw_black_hole is False:
                         a.draw_black_hole = True
