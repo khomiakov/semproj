@@ -49,9 +49,13 @@ class Camera:
 
     def camera_pitch(self, angle):
         rotate = rotate_x(angle)
-        self.forward = self.forward @ rotate  # @ self.camera_matrix()
-        self.right = self.right @ rotate
-        self.up = self.up @ rotate
+        #self.forward = self.forward @ rotate  
+        #self.right = self.right @ rotate
+        #self.up = self.up @ rotate
+        a =  rotate @ transpose(self.rotate_matrix())
+        self.forward = a[2][0], a[2][1], a[2][2], 1
+        self.right = a[0][0], a[0][1], a[0][2], 1
+        self.up = a[1][0], a[1][1], a[1][2], 1
 
     def translate_matrix(self):
         x, y, z, w = self.position
