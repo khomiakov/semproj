@@ -36,9 +36,9 @@ class Camera:
             self.camera_yaw(-self.rotation_speed)
         if key[pg.K_RIGHT]:
             self.camera_yaw(self.rotation_speed)
-        if key[pg.K_UP]:
+        if key[pg.K_UP] and not self.near_north():
             self.camera_pitch(-self.rotation_speed) 
-        if key[pg.K_DOWN]:
+        if key[pg.K_DOWN] and not self.near_south():
             self.camera_pitch(self.rotation_speed)
 
     def camera_yaw(self, angle):
@@ -79,3 +79,11 @@ class Camera:
 
     def camera_matrix(self):
         return self.translate_matrix() @ self.rotate_matrix()
+
+    def near_north(self):
+        fx, fy, fz, e = self.forward
+        return fx**2 + (fy-1)**2 + fz**2 <= self.rotation_speed**2
+
+    def near_south(self):
+        fx, fy, fz, e = self.forward
+        return fx**2 + (fy+1)**2 + fz**2 <= self.rotation_speed**2
