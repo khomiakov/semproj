@@ -1,14 +1,17 @@
 """
 Модуль хранит класс Button и функции, связанные с управлением программой.
 """
+
 from Constants import *
 
 
 class Button:
     """
+    Класс, содержащий функционал кнопок, а также их рисовку, параметры.
     """
     def __init__(self):
         """
+        ???
         """
         self.zzz = None
         self.rect = None
@@ -43,6 +46,7 @@ class Button:
         return surface
 
     def pressed(self, mouse):
+        """Проверяет, нажата ли кнопка."""
         if mouse[0] > self.rect.topleft[0]:
             if mouse[1] > self.rect.topleft[1]:
                 if mouse[0] < self.rect.bottomright[0]:
@@ -56,6 +60,7 @@ class Button:
                 return False
         else:
             return False
+        
 
 
 buttons_array = []
@@ -63,36 +68,26 @@ buttons_array = []
 
 def initiate_buttons():
     global buttons_array
-    button1 = Button()
-    button2 = Button()
-    button3 = Button()
-    button4 = Button()
-    button5 = Button()
-    buttons_array.append(button1)
-    buttons_array.append(button2)
-    buttons_array.append(button3)
-    buttons_array.append(button4)
-    buttons_array.append(button5)
+    for i in range(5):
+        buttoni = Button()
+        buttons_array.append(buttoni)
 
 
-def draw_buttons_and_stuff(screen):
-    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
-                         "Визуализация эффекта", (255, 255, 255))
-    Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
-    Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
-    Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
-    Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 80, 20, 40, 40, 0,
-                         "Справка", (255, 255, 255))
-    font_obj = pygame.font.Font('freesansbold.ttf', 10)
-    text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
-    text_rect_obj = text_surface_obj.get_rect()
-    text_rect_obj.center = (105, c.height - 70)
-    screen.blit(text_surface_obj, text_rect_obj)
-
-
-def draw_buttons_and_stuff_1(screen):
-    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
-                         "Добавить чёрную дыру", (255, 255, 255))
+def draw_buttons_and_stuff(screen, i):
+    """
+    i - отражает этап выполнения программы, в зависимости от которого кнопки выполняют разные фунции.
+    """
+    
+    if i == 0:
+        m = "Визуализация эффекта"
+        Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 80, 20, 40, 40, 0, "Справка", (255, 255, 255))
+        #добавление на экран начальной заставки
+    elif i == 1:
+        m = "Добавить черную дыру"
+    elif i == 2:
+        m = "Убрать черную дыру"
+    
+    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0, m, (255, 255, 255))
     Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
     Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
     Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
@@ -101,25 +96,11 @@ def draw_buttons_and_stuff_1(screen):
     text_rect_obj = text_surface_obj.get_rect()
     text_rect_obj.center = (105, c.height - 70)
     screen.blit(text_surface_obj, text_rect_obj)
-
-
-def draw_buttons_and_stuff_2(screen):
-    Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0,
-                         "Убрать чёрную дыру", (255, 255, 255))
-    Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
-    Button.create_button(buttons_array[2], screen, (40, 40, 40), 70, c.height - 50, 70, 50, 0, "f(m)", (255, 255, 255))
-    Button.create_button(buttons_array[3], screen, (40, 40, 40), 140, c.height - 50, 70, 50, 0, "f(d)", (255, 255, 255))
-    font_obj = pygame.font.Font('freesansbold.ttf', 10)
-    text_surface_obj = font_obj.render('Нажмите для построения графиков:', True, (255, 255, 255))
-    text_rect_obj = text_surface_obj.get_rect()
-    text_rect_obj.center = (105, c.height - 70)
-    screen.blit(text_surface_obj, text_rect_obj)
-
 
 def draw_black_hole(screen):
     pygame.draw.circle(screen, (0, 0, 0), (c.x0, c.y0), c.r_bh_screen)
 
-
 def give_information():
-    print("information")
+    print("Для запуска визуализации нажмите кнопку в правом нижнем углу. Управление в процессе моделирования осуществляется с помощью стрелок \
+на клавиатуре.")
 

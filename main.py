@@ -19,7 +19,7 @@ def main():
     visualization = VisualEngine(screen)
     mapping = create_mapping()
     initiate_buttons()
-    draw_buttons_and_stuff(screen)
+    draw_buttons_and_stuff(screen, 0)
     
     while not finished:
         pygame.display.update()
@@ -28,9 +28,9 @@ def main():
         if visualization.go is True:
             visualization.run()
             if visualization.draw_black_hole is False:
-                draw_buttons_and_stuff_1(screen)
+                draw_buttons_and_stuff(screen, 1)
             else:
-                draw_buttons_and_stuff_2(screen)
+                draw_buttons_and_stuff(screen, 2)
                 model(screen, mapping)
                 draw_black_hole(screen)
                 
