@@ -1,12 +1,15 @@
 """
-Модуль хранит класс Button
+Модуль хранит класс Button и функции, связанные с управлением программой.
 """
 from Constants import *
-pygame.init()
 
 
 class Button:
+    """
+    """
     def __init__(self):
+        """
+        """
         self.zzz = None
         self.rect = None
     
@@ -119,3 +122,4 @@ def draw_black_hole(screen):
 
 def give_information():
     print("information")
+

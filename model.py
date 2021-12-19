@@ -1,10 +1,10 @@
+"""Модуль отвечает за функцию преобразования координат"""
+
 from Constants import *
 
 
-"""Модуль отвечает за функцию преобразования координат"""
-
-
 def create_mapping():
+    """"""
     initial_array = []
     new_array = []
     for i in range(c.x0 - 150, c.x0 + 150 + 1):
@@ -21,8 +21,8 @@ def create_mapping():
     b = [initial_array, new_array]
     return {(b[0][i][0], b[0][i][1]): (b[1][i][0], b[1][i][1]) for i in range(len(initial_array))}
 
-
 def model(screen, b):
+    """"""
     px_array = pygame.PixelArray(screen)
     px = []
     for i in range(c.x0 - 150, c.x0 + 150 + 1):
