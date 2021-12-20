@@ -12,8 +12,6 @@ class VisualEngine:
         self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
         self.screen = screen
         self.create_objects()
-        self.camera = Camera(self, [0, 0, 0])
-        self.projection = Projection(self)
         self.go = False
         self.draw_black_hole = False
 
