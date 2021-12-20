@@ -64,8 +64,7 @@ class Button:
 
 
 buttons_array = []
-
-
+                                   
 def initiate_buttons():
     global buttons_array
     for i in range(5):
@@ -81,7 +80,6 @@ def draw_buttons_and_stuff(screen, i):
     if i == 0:
         m = "Визуализация эффекта"
         Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 80, 20, 40, 40, 0, "Справка", (255, 255, 255))
-        #добавление на экран начальной заставки
     elif i == 1:
         m = "Добавить черную дыру"
     elif i == 2:

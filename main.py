@@ -15,11 +15,14 @@ def main():
     pygame.display.set_caption("Гравитационное линзирование")
     finished = False
     clock = pygame.time.Clock()
+    image = pygame.image.load('start_photo.png').convert()
+    image = pygame.transform.scale(image, (c.width, c.height))
     
     visualization = VisualEngine(screen)
     mapping = create_mapping()
     initiate_buttons()
-    draw_buttons_and_stuff(screen, 0)
+    screen.blit(image, (0, 0))
+    draw_buttons_and_stuff(screen, 0)  
     
     while not finished:
         pygame.display.update()
