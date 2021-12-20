@@ -82,8 +82,10 @@ def draw_buttons_and_stuff(screen, i):
         Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 80, 20, 40, 40, 0, "Справка", (255, 255, 255))
     elif i == 1:
         m = "Добавить черную дыру"
+        Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 140, 20, 120, 40, 0, "Переключить мерцание", (255, 255, 255))
     elif i == 2:
         m = "Убрать черную дыру"
+        Button.create_button(buttons_array[4], screen, (40, 40, 40), c.width - 140, 20, 120, 40, 0, "Переключить мерцание", (255, 255, 255))
     
     Button.create_button(buttons_array[0], screen, (40, 40, 40), c.width - 200, c.height - 100, 200, 100, 0, m, (255, 255, 255))
     Button.create_button(buttons_array[1], screen, (40, 40, 40), 0, c.height - 50, 70, 50, 0, "f(a)", (255, 255, 255))
