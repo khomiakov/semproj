@@ -18,10 +18,11 @@ class Object3D:
         self.vertexes - массив вершин в ЛСО
         self.faces - массив связей вершин (полигонов)
         self.movement_flag - переменная, отвечающая за возможность двигать объект 
-        self.draw_vertexes - переменная, отвечающая за отрисовку вершин.
+        self.draw_vertexes - переменная, отвечающая за отрисовку вершин
         self.font - шрифт надписи у полигона
         self.color_faces - цвет полигона
         self.label - надпись на полигоне
+        self.blinking - переменная, отвечающая за мерцание
         """
         self.render = render
         self.vertexes = np.array([np.array(v) for v in vertexes])
@@ -30,8 +31,9 @@ class Object3D:
 
         self.font = pg.font.SysFont('Arial', 30, bold=True)
         self.color_faces = [(pg.Color('orange'), face) for face in self.faces]
-        self.movement_flag, self.draw_vertexes = True, True
+        self.movement_flag, self.draw_vertexes, self.blinking = True, True, False
         self.label = ''
+        self.star_size = generate_star_size()
 
     def draw(self):
         self.screen_projection()
@@ -57,9 +59,14 @@ class Object3D:
                     self.render.screen.blit(text, polygon[-1])
 
         if self.draw_vertexes:
+            i = 0
             for vertex in vertexes:
                 if not any_func(vertex, self.render.H_WIDTH, self.render.H_HEIGHT):
-                    pg.draw.circle(self.render.screen, c.white, vertex, np.random.randint(0, 4))
+                    if self.blinking:
+                        pg.draw.circle(self.render.screen, c.white, vertex, np.random.randint(0, 4))
+                    else:
+                        pg.draw.circle(self.render.screen, c.white, vertex, self.star_size[i])
+                i+=1
 
     def translate(self, pos):
         """
@@ -129,6 +136,14 @@ def generate_3d_sky():
         a[i][1] = (r ** 2 - a[i][2] ** 2) ** 0.5 * np.sin(a[i][0] * 2 * np.pi)
         a[i][0] = (r ** 2 - a[i][2] ** 2) ** 0.5 * np.cos(a[i][0] * 2 * np.pi)
         a[i][3] = 1
+    return a
+
+def generate_star_size():
+    """Генерирует массив с размерами звезд
+    """
+    a = np.random.sample(3000)
+    for i in range(len(a)):
+        a[i] = round(a[i] * 3)
     return a
 
 
