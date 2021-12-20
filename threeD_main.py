@@ -14,7 +14,6 @@ class VisualEngine:
         self.create_objects()
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
-        self.object = Object3D(self, generate_3d_sky())
         self.go = False
         self.draw_black_hole = False
 
@@ -22,11 +21,12 @@ class VisualEngine:
         self.camera = Camera(self, [0, 0, 0])
         self.projection = Projection(self)
         self.object = Object3D(self, generate_3d_sky())
-        self.object.rotate_y(-math.pi / 4)
+        self.axes = Axes(self)
 
     def draw(self):
         self.screen.fill(c.sky_color)
         self.object.draw()
+        self.axes.draw()
 
     def run(self):
         self.draw()

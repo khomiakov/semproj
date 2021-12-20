@@ -30,12 +30,13 @@ class Object3D:
         self.movement_flag, self.draw_vertexes = True, True
         self.label = ''
 
+
     def draw(self):
         self.screen_projection()
 
     def screen_projection(self):
         """
-        Функция проецирует вержины на экран зрителя
+        Функция проецирует вершины на экран зрителя
         """
         vertexes = self.vertexes @ self.render.camera.camera_matrix()
         vertexes = vertexes @ self.render.projection.projection_matrix
@@ -87,3 +88,29 @@ class Object3D:
         Функция поворота вершин в пространстве вокруг z
         """
         self.vertexes = self.vertexes @ rotate_z(angle)
+
+class Axes(Object3D):
+    def __init__(self, render):
+        super().__init__(render, np.array([(0, 0, 0, 1), (1, 0, 0, 0.1), (0, 0.1, 0, 1), (0, 0, 0.1, 1)]), np.array([(0, 1), (0, 2), (0, 3)]))
+        #self.vertexes = np.array([(0, 0, 0, 1), (1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1)])
+        #self.faces = np.array([(0, 1), (0, 2), (0, 3)])
+        self.colors = [pg.Color('red'), pg.Color('green'), pg.Color('blue')]
+        self.color_faces = [(color, face) for color, face in zip(self.colors, self.faces)]
+        self.draw_vertexes = False
+        self.label = 'XYZ'
+
+    def update(self):
+        self.vertexes = np.array([(0, 0, 0, 1), (0.1, 0, 0, 1), (0, 0.1, 0, 1), (0, 0, 0.1, 1)])
+        f = np.array(self.render.camera.forward)
+        r = np.array(self.render.camera.right)
+        u = np.array(self.render.camera.up)
+        a = f + r * -0.47 + u * 0.2
+        pos = a[0:3] 
+        self.translate(pos)
+
+    def draw(self):
+        self.update()
+        self.screen_projection()
+
+        
+
