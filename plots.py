@@ -8,6 +8,7 @@ from Constants import *
 
 
 class Plot1:
+    """Первый график, для описания смотреть заголовок графика"""
     def __init__(self):
         self.x_f1 = np.arange(1, 3600, 1 / 60)
         self.zzz = None
@@ -28,6 +29,7 @@ class Plot1:
 
 
 class Plot2:
+    """Второй график, для описания смотреть заголовок графика"""
     def __init__(self):
         self.x_f2 = np.arange(1, 10000, 1)
         self.zzz = None
@@ -49,6 +51,7 @@ class Plot2:
 
 
 class Plot3:
+    """Третий график, для описания смотреть заголовок графика"""
     def __init__(self):
         self.x_f3 = np.arange(1, 1000, 1)
         self.zzz = None
@@ -70,15 +73,18 @@ class Plot3:
 
 
 def plot1():
+    """Отрисовка графика 1"""
     p = Plot1()
     p.draw_plot()
 
 
 def plot2():
+    """Отрисовка графика 2"""
     p = Plot2()
     p.draw_plot()
 
 
 def plot3():
+    """Отрисовка графика 3"""
     p = Plot3()
     p.draw_plot()
