@@ -1,9 +1,25 @@
+"""Модуль отвечающий за камеру наблюдателя и ее вращение в пространстве"""
+
 import pygame as pg
 from matrix_functions import *
 
 
 class Camera:
+    """класс камеры зрителя
+    """
     def __init__(self, render, position):
+        """
+        self.position - позиция камеры в пространстве
+        self.forward - направление оси z собственных координат камеры
+        self.up  - направление оси y собственных координат камеры
+        self.right  - направление оси x собственных координат камеры
+        self.h_fov - угол обзора по горизонтали
+        self.v_fov - угол обзора по вертикали
+        self.near_plane - расстояние до ближней плоскости осечения
+        self.far_plane - расстояние до дальней плоскости осечения
+        self.moving_speed - скорость перемещения камеры
+        self.rotation_speed - скорость поворота камеры
+        """
         self.render = render
         self.position = np.array([*position, 1.0])
         self.forward = np.array([0, 0, 1, 1])   # z
@@ -17,6 +33,8 @@ class Camera:
         self.rotation_speed = 0.003
 
     def control(self):
+        """управление камерой
+        """
         key = pg.key.get_pressed()
         if key[pg.K_LEFT]:
             self.camera_yaw(-self.rotation_speed)
@@ -28,12 +46,16 @@ class Camera:
             self.camera_pitch(self.rotation_speed)
 
     def camera_yaw(self, angle):
+        """вращение камеры вокруг абсолютной оси y
+        """
         rotate = rotate_y(angle)
         self.forward = self.forward @ rotate
         self.right = self.right @ rotate
         self.up = self.up @ rotate
 
     def camera_pitch(self, angle):
+        """вращение камеры вокруг собственной оси х
+        """
         rotate = rotate_x(angle)
         a = rotate @ transpose(self.rotate_matrix())
         self.forward = a[2][0], a[2][1], a[2][2], 1
@@ -41,6 +63,7 @@ class Camera:
         self.up = a[1][0], a[1][1], a[1][2], 1
 
     def translate_matrix(self):
+        """матрица перемещения"""
         x, y, z, w = self.position
         return np.array([
             [1, 0, 0, 0],
