@@ -23,7 +23,7 @@ class VisualEngine:
         self.equator.draw_vertexes = False
         self.equator.font = pg.font.SysFont('Arial', 20, bold=True)
         self.equator.color_faces = [(pg.Color('white'), face) for face in self.equator.faces]
-        self.equator.label = 10* 'equator                                           '
+        self.equator.label = 10 * 'equator                                           '
         self.axes = Axes(self)
 
     def draw(self):

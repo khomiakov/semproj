@@ -4,7 +4,9 @@ from Constants import *
 
 
 def create_mapping():
-    """"""
+    """
+    Данная функция отвечает за создание отображения между пикселями на экране
+    """
     initial_array = []
     new_array = []
     for i in range(c.x0 - 150, c.x0 + 150 + 1):
@@ -21,8 +23,11 @@ def create_mapping():
     b = [initial_array, new_array]
     return {(b[0][i][0], b[0][i][1]): (b[1][i][0], b[1][i][1]) for i in range(len(initial_array))}
 
+
 def model(screen, b):
-    """"""
+    """
+    Данная функция реализует отрисоку эффекта
+    """
     px_array = pygame.PixelArray(screen)
     px = []
     for i in range(c.x0 - 150, c.x0 + 150 + 1):

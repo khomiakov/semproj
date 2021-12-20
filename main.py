@@ -6,7 +6,6 @@ from plots import plot1, plot2, plot3
 from buttons import *
 from model import create_mapping, model
 from threeD_main import VisualEngine
-
 pygame.init()
 
 
@@ -48,7 +47,7 @@ def main():
                 elif buttons_array[4].pressed(pygame.mouse.get_pos()) and visualization.go is False:
                     give_information()
                 elif buttons_array[4].pressed(pygame.mouse.get_pos()) and visualization.go is True:
-                    if visualization.object.blinking == True:
+                    if visualization.object.blinking is True:
                         visualization.object.blinking = False
                     else: 
                         visualization.object.blinking = True
@@ -66,6 +65,4 @@ def main():
 
 
 main()
-
 pygame.quit()
-

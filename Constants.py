@@ -20,7 +20,7 @@ class Constants:
         self.height = info.current_h      # высота экрана, считывается ширина экрана пользователя
         self.y0 = int(self.height / 2)    # координата y центра чёрной дыры на экране
         self.r_bh_screen = int(self.s * np.power(4 * self.m * self.g / self.d / (self.c ** 2), 1 / 2))
-                                          # радиус чёрной дыры на экране определяется вышестоящей формулой
+        # радиус чёрной дыры на экране определяется вышестоящей формулой
         self.fps = 60
         self.white = (255, 255, 255)
         self.sky_color = (2, 8, 19)
