@@ -6,6 +6,7 @@ import numpy as np
 
 
 class Projection:
+    """Проецирует изображение на экран."""
     def __init__(self, render):
         near = render.camera.near_plane
         far = render.camera.far_plane
