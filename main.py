@@ -48,9 +48,10 @@ def main():
                 elif buttons_array[4].pressed(pygame.mouse.get_pos()) and visualization.go is False:
                     give_information()
                 elif buttons_array[4].pressed(pygame.mouse.get_pos()) and visualization.go is True:
-                    if self.blinking == True:
-                        self.blinking = False
-                    else: self.blinking = True
+                    if visualization.object.blinking == True:
+                        visualization.object.blinking = False
+                    else: 
+                        visualization.object.blinking = True
                 elif buttons_array[0].pressed(pygame.mouse.get_pos()) and visualization.go is True:
                     if visualization.draw_black_hole is False:
                         visualization.draw_black_hole = True
